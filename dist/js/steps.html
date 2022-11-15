@@ -1,0 +1,119 @@
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>animation-direction: alternate</title>
+        <style>
+            *,
+            *::after,
+            *::before {
+                padding: 0;
+                margin: 0;
+                box-sizing: border-box;
+            }
+
+            .block {
+                width: 100px;
+                height: 100px;
+                background: #000;
+                color: #fff;
+                margin: 10px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-size: 14px;
+            }
+
+            .linear {
+                animation-timing-function: linear;
+            }
+
+            .ease {
+                animation-timing-function: ease;
+            }
+
+            .ease-in {
+                animation-timing-function: ease-in;
+            }
+
+            .ease-out {
+                animation-timing-function: ease-out;
+            }
+
+            .ease-in-out {
+                animation-timing-function: ease-in-out;
+            }
+
+            .cubic-bezier {
+                animation-timing-function: cubic-bezier(0.075, 0.82, 0.165, 1);
+            }
+
+            .steps {
+                animation-timing-function: steps(3, start);
+            }
+
+            .step-start {
+                animation-timing-function: step-start;
+            }
+
+            .step-end {
+                animation-timing-function: step-end;
+            }
+
+            .initial {
+                animation-timing-function: initial;
+            }
+
+            .inherit {
+                animation-timing-function: inherit;
+            }
+
+            .wrap.run .block {
+                animation-name: move;
+                animation-duration: 5s;
+                animation-iteration-count: infinite;
+                animation-direction: alternate;
+            }
+
+            @keyframes move {
+                from {
+                    transform: translate(10px, 10px);
+                }
+
+                to {
+                    transform: translate(300px, 10px);
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <button onclick="doRun()" style="margin: 10px; padding: 10px 20px">Run</button>
+        <div class="wrap">
+            <div class="block linear">linear</div>
+            <div class="block ease">ease</div>
+            <div class="block ease-in">ease-in</div>
+            <div class="block ease-out">ease-out</div>
+            <div class="block ease-in-out">ease-in-out</div>
+            <div class="block cubic-bezier">cubic-bezier()</div>
+            <div class="block steps">steps()</div>
+            <div class="block step-start">step-start</div>
+            <div class="block step-end">step-end</div>
+            <div class="block initial">initial</div>
+            <div class="block inherit">inherit</div>
+        </div>
+    </body>
+    <script>
+        const doRun = () => {
+            let dom = document.querySelector('.wrap')
+            if (dom) {
+                dom.classList.remove('run')
+                setTimeout(() => {
+                    dom.classList.add('run')
+                }, 300)
+            }
+        }
+    </script>
+</html>

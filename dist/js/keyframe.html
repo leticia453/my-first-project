@@ -1,0 +1,61 @@
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>css animation keyframes base</title>
+        <style>
+            .block {
+                width: 100px;
+                height: 100px;
+                position: fixed;
+                top: 10px;
+                left: 10px;
+                background: #000;
+                color: #fff;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+
+            .block.run {
+                animation-name: move;
+                animation-duration: 3s;
+            }
+
+            @keyframes move {
+    0% {
+        left: 10px;
+    }
+
+    20% {
+        top: 100px;
+        transform: rotate(180deg);
+    }
+
+    50% {
+        top: 150px;
+        transform: rotate(360deg) scale(2);
+    }
+
+    100% {
+        left: 300px;
+    }
+}
+        </style>
+    </head>
+    <body>
+        <div class="block" onclick="doRun(this)">Click Me!</div>
+    </body>
+
+    <script>
+        const doRun = (el) => {
+            el.classList.remove('run')
+            setTimeout(() => {
+                el.classList.add('run')
+            }, 300)
+        }
+    </script>
+</html>
